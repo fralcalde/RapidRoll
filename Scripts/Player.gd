@@ -21,6 +21,7 @@ func _process(delta):
 	
 func _physics_process(delta):
 	_velocity.x = speed * move_input * delta
+	_velocity.y += GRAVITY * delta
 	_velocity = move_and_slide(_velocity,Vector2.UP)
 	
 func _mantener_en_pantalla():
