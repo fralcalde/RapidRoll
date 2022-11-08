@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/PlatformsSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Imagenes/Pinchos.png" type="Texture" id=3]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, -71 )
+
+[node name="PlatformsSpawner" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 354, 16 )
+rotation = 3.14159
+scale = Vector2( 22, 1 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}

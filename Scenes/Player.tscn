@@ -15,8 +15,8 @@ animations = [ {
 } ]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 243, 150 )
 scale = Vector2( 4, 4 )
+collision_layer = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
