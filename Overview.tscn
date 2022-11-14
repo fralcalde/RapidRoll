@@ -80,3 +80,7 @@ margin_top = -0.75
 margin_right = 191.5
 margin_bottom = 15.25
 text = "Puntos"
+
+[node name="Pinchos7" type="Sprite" parent="."]
+position = Vector2( 38, 26 )
+texture = ExtResource( 2 )

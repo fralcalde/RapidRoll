@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://Scripts/HitBox.gd"
+}, {
+"base": "Area2D",
+"class": "HurtBox",
+"language": "GDScript",
+"path": "res://Scripts/HurtBox.gd"
+}, {
 "base": "StaticBody2D",
 "class": "Plataforma",
 "language": "GDScript",
 "path": "res://Scripts/Plataforma.gd"
 } ]
 _global_script_class_icons={
+"HitBox": "res://Imagenes/HitBox.svg",
+"HurtBox": "res://Imagenes/HurtBox.svg",
 "Plataforma": ""
 }
 
@@ -28,6 +40,7 @@ config/icon="res://icon.png"
 
 window/size/width=720
 window/size/height=1280
+window/size/resizable=false
 window/size/test_width=360
 window/size/test_height=640
 

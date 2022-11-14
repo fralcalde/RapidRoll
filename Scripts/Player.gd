@@ -29,4 +29,7 @@ func _mantener_en_pantalla():
 		position.x = tamano_pantalla
 	elif position.x < 0:
 		position.x = 0
+		
+func take_damage():
+	queue_free()
 
