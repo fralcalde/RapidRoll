@@ -1,46 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/PlatformsSpawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/HitBox.gd" type="Script" id=3]
-[ext_resource path="res://Imagenes/Techo.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Piso.gd" type="Script" id=5]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 360, 16 )
+[ext_resource path="res://Scenes/Game.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 position = Vector2( -1, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 302, 119 )
-
-[node name="PlatformsSpawner" parent="." instance=ExtResource( 2 )]
-
-[node name="Techo" type="Sprite" parent="."]
-position = Vector2( 360, 16 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="HitBox" type="Area2D" parent="Techo"]
-script = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Techo/HitBox"]
-shape = SubResource( 1 )
-
-[node name="Piso" type="Sprite" parent="."]
-position = Vector2( 358, 630 )
-z_index = 1
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="HitBox" type="Area2D" parent="Piso"]
-script = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso/HitBox"]
-shape = SubResource( 1 )
+[node name="Game" parent="." instance=ExtResource( 6 )]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Piso.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Techo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/PlatformsSpawner.tscn" type="PackedScene" id=4]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Timer_Score" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Spawn_Position" type="Position2D" parent="."]
+
+[node name="Timer_Spawn" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Piso" parent="." instance=ExtResource( 2 )]
+
+[node name="Techo" parent="." instance=ExtResource( 3 )]
+
+[node name="PlatformsSpawner" parent="." instance=ExtResource( 4 )]
+
+[node name="Score" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Score"]
+margin_top = 33.0
+margin_right = 40.0
+margin_bottom = 73.0
+rect_scale = Vector2( 5, 5 )
+
+[node name="vidas" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="vidas"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_top = 31.0
+margin_bottom = 71.0
+rect_scale = Vector2( 5, 5 )
+
+[connection signal="timeout" from="Timer_Score" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer_Spawn" to="." method="_on_Timer_Spawn_timeout"]

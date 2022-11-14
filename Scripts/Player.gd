@@ -9,7 +9,7 @@ var move_input = 0
 var tamano_pantalla
 var muerte_fuera_de_pantalla
 
-
+signal player_died
 
 func _ready():
 	tamano_pantalla = get_viewport_rect().size.x
@@ -31,5 +31,6 @@ func _mantener_en_pantalla():
 		position.x = 0
 		
 func take_damage():
+	emit_signal("player_died")
 	queue_free()
 
