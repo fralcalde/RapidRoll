@@ -3,7 +3,6 @@ extends Node2D
 export var vidas = 3
 
 var player_scene = preload("res://Scenes/Player.tscn") #se carga en memoria 
-onready var aceleracion = 1
 
 
 onready var spawn_position = $Spawn_Position
@@ -11,8 +10,6 @@ onready var score = 0
 onready var timer_score = $Timer_Score
 onready var timer_spawn = $Timer_Spawn
 onready var HUD = $HUDLayer/HUD
-#onready var hud_score = $Score/RichTextLabel
-#onready var hud_vidas = $vidas/RichTextLabel
 
 
 func _ready():

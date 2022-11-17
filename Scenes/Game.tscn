@@ -25,26 +25,6 @@ one_shot = true
 
 [node name="PlatformsSpawner" parent="." instance=ExtResource( 4 )]
 
-[node name="Score" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Score"]
-margin_top = 33.0
-margin_right = 40.0
-margin_bottom = 73.0
-rect_scale = Vector2( 5, 5 )
-
-[node name="vidas" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="vidas"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -40.0
-margin_top = 31.0
-margin_bottom = 71.0
-rect_scale = Vector2( 5, 5 )
-
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="HUDLayer" instance=ExtResource( 5 )]
