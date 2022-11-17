@@ -7,7 +7,6 @@ var player_scene = preload("res://Scenes/Player.tscn") #se carga en memoria
 
 onready var spawn_position = $Spawn_Position
 onready var score = 0
-onready var timer_score = $Timer_Score
 onready var timer_spawn = $Timer_Spawn
 onready var HUD = $HUDLayer/HUD
 
@@ -25,26 +24,23 @@ func _spawn_player():
 	player.position = spawn_position.position
 	add_child(player)
 	player.connect("player_died", self, "_on_player_died")
+	player.connect("player_scoring", self, "_on_player_scoring")
 
 
 func _on_player_died():
 	vidas = vidas -1
 	if vidas > 0:
 		timer_spawn.start()
-		timer_score.stop()
 	elif vidas <= 0:
-		timer_score.stop()
 		print("Game Over")
 	
 	HUD.set_vidas(vidas)
 
 
-func _on_Timer_timeout():
+func _on_player_scoring():
 	score += 1
 	HUD.set_score(score)
 
 
 func _on_Timer_Spawn_timeout():
 	_spawn_player()
-	timer_score.start()
-

@@ -9,6 +9,7 @@ var tamano_pantalla
 var muerte_fuera_de_pantalla
 
 signal player_died
+signal player_scoring
 
 
 func _ready():
@@ -25,6 +26,9 @@ func _physics_process(delta):
 	_velocity.x = speed * move_input * delta
 	_velocity.y += GRAVITY * delta
 	_velocity = move_and_slide(_velocity,Vector2.UP)
+	
+	if not is_on_floor():
+		emit_signal("player_scoring")
 
 
 func _mantener_en_pantalla():
