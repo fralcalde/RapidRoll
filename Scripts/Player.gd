@@ -16,7 +16,7 @@ func _ready():
 	print(tamano_pantalla)
 
 
-func _process(delta):
+func _process(_delta):
 	move_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	_mantener_en_pantalla()
 
