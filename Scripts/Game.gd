@@ -10,13 +10,14 @@ onready var spawn_position = $Spawn_Position
 onready var score = 0
 onready var timer_score = $Timer_Score
 onready var timer_spawn = $Timer_Spawn
-onready var hud_score = $Score/RichTextLabel
-onready var hud_vidas = $vidas/RichTextLabel
+onready var HUD = $HUDLayer/HUD
+#onready var hud_score = $Score/RichTextLabel
+#onready var hud_vidas = $vidas/RichTextLabel
 
 
 func _ready():
-	hud_score.text = "0"
-	hud_vidas.text = str(vidas)
+	HUD.set_score(score)
+	HUD.set_vidas(vidas)
 	spawn_position.position.x = get_viewport().size.x / 2
 	spawn_position.position.y = 130
 	_spawn_player()
@@ -38,13 +39,12 @@ func _on_player_died():
 		timer_score.stop()
 		print("Game Over")
 	
-	hud_vidas.text = str(vidas)
+	HUD.set_vidas(vidas)
 
 
 func _on_Timer_timeout():
 	score += 1
-	hud_score.text = str(score)
-	#print(score)
+	HUD.set_score(score)
 
 
 func _on_Timer_Spawn_timeout():

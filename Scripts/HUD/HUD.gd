@@ -1,9 +1,15 @@
 extends Control
 
+onready var vidas_counter = $LivesCounter
+onready var score_counter = $ScoreCounter
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
+func set_vidas(_vidas):
+	vidas_counter.vidas = _vidas
+
+
+func set_score(_score):
+	score_counter.score = _score
 
 
 #func _unhandled_key_input(event):
