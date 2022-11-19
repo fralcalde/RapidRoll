@@ -11,7 +11,6 @@ func _ready():
 
 func set_vidas(new_val):
 	vidas = new_val
-	print("setget")
 	$HBoxContainer/Vidas.text = str(new_val)
 
 

@@ -7,8 +7,8 @@ export(Array) var platforms
 
 func _ready():
 	_spawn_platforms()
-	pass
-	
+
+
 func _spawn_platforms():
 	randomize()
 	var index
