@@ -6,11 +6,11 @@ const SPECIAL_PLATFORM_CHANCE = 25
 export var platforms = {
 	'PLAT': {'scene': preload("res://Scenes/Platforms/Platform.tscn"), 'weight': 8.0},
 	'PLAT_PINCHOS': {'scene': preload("res://Scenes/Platforms/PlatformPinchos.tscn"), 'weight': 2.0},
-	#'PLAT_PLAYER': {'scene': preload("res://Scenes/PlataformPlayer.tscn"), 'weight': 0.0},
+	'PLAT_PLAYER_SPAWNER': {'scene': preload("res://Scenes/Platforms/PlataformPlayerSpawner.tscn"), 'weight': 0.0},
 }
 
 
-var next_platforms: Array = []
+var next_platforms: Array = ['PLAT_PLAYER_SPAWNER']
 
 
 func _ready():

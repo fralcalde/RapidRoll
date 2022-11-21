@@ -2,16 +2,17 @@ class_name PlatformSpawner
 extends Platform
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal spawn_player(position)
+
+
+onready var anim_player = $AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	anim_player.play('COUNTDOWN')
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == 'COUNTDOWN':
+		emit_signal('spawn_player', $PlayerSpawn.global_position)
