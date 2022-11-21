@@ -12,6 +12,16 @@ onready var player_sprite = $PlayerSpawn
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim_player.play('COUNTDOWN')
+	print('_ready')
+
+
+func _init():
+	print('_init')
+
+
+func _enter_tree():
+	print('_enter_tree')
+	GameEvents.player_spawning()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
