@@ -15,17 +15,21 @@ onready var platform_spawner = $PlatformsSpawner
 func _ready():
 	HUD.set_score(score)
 	HUD.set_vidas(vidas)
-	spawn_position.position.x = get_viewport().size.x / 2
-	spawn_position.position.y = 130
-	_spawn_player()
+	
+	GameEvents.connect('spawn_player', self, '_spawn_player_at_pos')
 
 
-func _spawn_player():
+func _spawn_player_at_pos(_pos: Vector2):
+	print('Spawning')
 	var player = player_scene.instance()
-	player.position = spawn_position.position
+	player.position = _pos
 	add_child(player)
 	player.connect("player_died", self, "_on_player_died")
 	player.connect("player_scoring", self, "_on_player_scoring")
+
+
+func _instance_player_spawner_platform():
+	platform_spawner.next_platforms.push_front('PLAT_PLAYER_SPAWNER')
 
 
 func _on_player_died():
@@ -44,4 +48,4 @@ func _on_player_scoring():
 
 
 func _on_Timer_Spawn_timeout():
-	_spawn_player()
+	_instance_player_spawner_platform()

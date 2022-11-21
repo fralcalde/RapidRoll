@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Object",
-"class": "GameEvents",
-"language": "GDScript",
-"path": "res://Scripts/GameEvents.gd"
-}, {
 "base": "Area2D",
 "class": "HitBox",
 "language": "GDScript",
@@ -35,7 +30,6 @@ _global_script_classes=[ {
 "path": "res://Scripts/Platforms/PlataformPlayerSpawner.gd"
 } ]
 _global_script_class_icons={
-"GameEvents": "",
 "HitBox": "res://Imagenes/HitBox.svg",
 "HurtBox": "res://Imagenes/HurtBox.svg",
 "Platform": "",

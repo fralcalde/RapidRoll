@@ -10,7 +10,7 @@ export var platforms = {
 }
 
 
-var next_platforms: Array = ['PLAT_PLAYER_SPAWNER']
+var next_platforms: Array = ['PLAT_PLAYER_SPAWNER','PLAT_PLAYER_SPAWNER','PLAT_PLAYER_SPAWNER','PLAT_PLAYER_SPAWNER']
 
 
 func _ready():

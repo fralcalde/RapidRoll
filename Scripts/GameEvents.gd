@@ -1,5 +1,5 @@
-class_name GameEvents
-extends Object
+#class_name GameEvents
+extends Node
 
 signal spawn_player(position)
 signal player_died
