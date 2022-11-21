@@ -4,7 +4,7 @@ const SPECIAL_PLATFORM_CHANCE = 25
 
 
 export var platforms = {
-	'PLAT': {'scene': preload("res://Scenes/Platforms/Plataforma.tscn"), 'weight': 8.0},
+	'PLAT': {'scene': preload("res://Scenes/Platforms/Platform.tscn"), 'weight': 8.0},
 	'PLAT_PINCHOS': {'scene': preload("res://Scenes/Platforms/PlatformPinchos.tscn"), 'weight': 2.0},
 	#'PLAT_PLAYER': {'scene': preload("res://Scenes/PlataformPlayer.tscn"), 'weight': 0.0},
 }

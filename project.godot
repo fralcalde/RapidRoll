@@ -20,14 +20,20 @@ _global_script_classes=[ {
 "path": "res://Scripts/HurtBox.gd"
 }, {
 "base": "StaticBody2D",
-"class": "Plataforma",
+"class": "Platform",
 "language": "GDScript",
-"path": "res://Scripts/Plataforma.gd"
+"path": "res://Scripts/Platforms/Platform.gd"
+}, {
+"base": "Platform",
+"class": "PlatformSpawner",
+"language": "GDScript",
+"path": "res://Scripts/Platforms/PlataformPlayerSpawner.gd"
 } ]
 _global_script_class_icons={
 "HitBox": "res://Imagenes/HitBox.svg",
 "HurtBox": "res://Imagenes/HurtBox.svg",
-"Plataforma": ""
+"Platform": "",
+"PlatformSpawner": ""
 }
 
 [application]
