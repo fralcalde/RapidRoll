@@ -14,7 +14,6 @@ signal player_scoring
 
 func _ready():
 	tamano_pantalla = get_viewport_rect().size.x
-	print(tamano_pantalla)
 
 
 func _process(_delta):

@@ -4,10 +4,9 @@
 [ext_resource path="res://Imagenes/Barra.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 5.5 )
+extents = Vector2( 64, 10 )
 
 [node name="Plataforma" type="StaticBody2D"]
-scale = Vector2( 4, 2 )
 collision_mask = 0
 script = ExtResource( 1 )
 __meta__ = {
@@ -15,8 +14,8 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )

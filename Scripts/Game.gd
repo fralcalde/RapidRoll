@@ -9,6 +9,7 @@ onready var spawn_position = $Spawn_Position
 onready var score = 0
 onready var timer_spawn = $Timer_Spawn
 onready var HUD = $HUDLayer/HUD
+onready var platform_spawner = $PlatformsSpawner
 
 
 func _ready():
