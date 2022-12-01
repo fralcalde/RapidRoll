@@ -1,5 +1,5 @@
 class_name Platform
-extends StaticBody2D
+extends KinematicBody2D
 
 
 export var speed = 300
@@ -11,5 +11,5 @@ func _physics_process(delta):
 
 
 func fuera_de_pantalla():
-	if position.y < 50:
+	if position.y < 0:
 		queue_free()

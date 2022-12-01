@@ -10,12 +10,14 @@ position = Vector2( 172, 639 )
 
 [node name="RPlayer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 176, 481 )
+contacts_reported = 4
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="RPlayer2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 177, 548 )
+position = Vector2( 176, 481 )
+contacts_reported = 4
 __meta__ = {
 "_edit_group_": true
 }
