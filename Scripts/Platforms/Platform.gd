@@ -2,7 +2,7 @@ class_name Platform
 extends KinematicBody2D
 
 
-export var speed = 300
+export var speed = 150
 
 
 func _physics_process(delta):

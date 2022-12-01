@@ -2,7 +2,7 @@ extends Node2D
 
 export var vidas = 3
 
-var player_scene = preload("res://Scenes/Player.tscn") #se carga en memoria 
+var player_scene = preload("res://Scenes/RPlayer.tscn") #se carga en memoria 
 
 onready var spawn_position = $Spawn_Position
 onready var score = 0
