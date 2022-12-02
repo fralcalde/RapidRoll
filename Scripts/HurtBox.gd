@@ -8,7 +8,10 @@ func _init():
  
 
 func _ready():
-	connect("area_entered", self, "_on_area_entered")
+	var _err_area_entered = connect("area_entered", self, "_on_area_entered")
+	
+	if _err_area_entered != OK:
+		printerr("Connecting signal: ", _err_area_entered)
 
 
 func _on_area_entered(_hitbox: HitBox):

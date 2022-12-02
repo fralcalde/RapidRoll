@@ -14,8 +14,14 @@ var alive_players = 0
 
 # Godot llama _init() y _enter_tree() desde la raiz del arbol hacia abajo!!
 func _init():
-	GameEvents.connect('spawn_player', self, '_spawn_player_at_pos')
-	GameEvents.connect('player_spawning', self, '_on_player_spawning')
+	var _err_spawn_player = GameEvents.connect('spawn_player', self, '_spawn_player_at_pos')
+	var _err_player_spawning = GameEvents.connect('player_spawning', self, '_on_player_spawning')
+	
+	if _err_spawn_player != OK:
+		printerr("Connecting signal: ", _err_spawn_player)
+	if _err_player_spawning != OK:
+		printerr("Connecting signal: ", _err_player_spawning)
+
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
 func _ready():
