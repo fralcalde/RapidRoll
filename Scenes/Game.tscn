@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Piso.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Techo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/PlatformsSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/HUD/Hud.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/HUD/HUDLayer.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.5, 325 )
@@ -24,27 +24,25 @@ one_shot = true
 
 [node name="PlatformsSpawner" parent="." instance=ExtResource( 4 )]
 
-[node name="HUDLayer" type="CanvasLayer" parent="."]
+[node name="HUDLayer" parent="." instance=ExtResource( 5 )]
 
-[node name="HUD" parent="HUDLayer" instance=ExtResource( 5 )]
-
-[node name="Wall" type="StaticBody2D" parent="."]
-position = Vector2( 0, 10 )
+[node name="WallL" type="StaticBody2D" parent="."]
+position = Vector2( -8, 10 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallL"]
 position = Vector2( -0.5, 315 )
 shape = SubResource( 1 )
 
-[node name="Wall2" type="StaticBody2D" parent="."]
-position = Vector2( 360, 10 )
+[node name="WallR" type="StaticBody2D" parent="."]
+position = Vector2( 369, 10 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallR"]
 position = Vector2( -0.5, 315 )
 shape = SubResource( 1 )
 
