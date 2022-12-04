@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Imagenes/Player.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/HurtBox.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/PickBox.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -37,5 +38,10 @@ shape = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2( 0, 3.5 )
+shape = SubResource( 3 )
+
+[node name="PickBox" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PickBox"]
 shape = SubResource( 3 )

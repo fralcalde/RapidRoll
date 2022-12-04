@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/HurtBox.gd"
 }, {
+"base": "Area2D",
+"class": "PickBox",
+"language": "GDScript",
+"path": "res://Scripts/PickBox.gd"
+}, {
+"base": "Area2D",
+"class": "PickedBox",
+"language": "GDScript",
+"path": "res://Scripts/PickedBox.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Platform",
 "language": "GDScript",
@@ -43,6 +53,8 @@ _global_script_class_icons={
 "Game": "",
 "HitBox": "res://Imagenes/HitBox.svg",
 "HurtBox": "res://Imagenes/HurtBox.svg",
+"PickBox": "res://Imagenes/HitBox.svg",
+"PickedBox": "res://Imagenes/HurtBox.svg",
 "Platform": "",
 "PlatformSpawner": "",
 "RPlayer": ""
@@ -94,6 +106,7 @@ ui_right={
 2d_physics/layer_1="World"
 2d_physics/layer_2="Hitbox/Hurtbox"
 2d_physics/layer_3="Kill Platforms"
+2d_physics/layer_4="Items"
 
 [physics]
 

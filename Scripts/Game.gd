@@ -16,12 +16,14 @@ var alive_players = 0
 func _init():
 	var _err_spawn_player = GameEvents.connect('spawn_player', self, '_spawn_player_at_pos')
 	var _err_player_spawning = GameEvents.connect('player_spawning', self, '_on_player_spawning')
+	var _err_vida = GameEvents.connect("life_picked_up", self, 'player_picked_life')
 	
 	if _err_spawn_player != OK:
 		printerr("Connecting signal: ", _err_spawn_player)
 	if _err_player_spawning != OK:
 		printerr("Connecting signal: ", _err_player_spawning)
-
+	if _err_vida != OK:
+		printerr("Connecting signal: ", _err_vida)
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
 func _ready():
@@ -50,7 +52,6 @@ func _on_player_died():
 		elif vidas <= 0:
 			print("Game Over")
 	
-	print('dying, alive: ', alive_players)
 	HUD.set_vidas(vidas)
 
 
@@ -61,8 +62,13 @@ func _on_player_scoring():
 
 func _on_player_spawning():
 	alive_players = alive_players + 1
-	print('spawning, alive: ', alive_players)
 
 
 func _on_Timer_Spawn_timeout():
 	_instance_player_spawner_platform()
+
+
+func player_picked_life():
+	vidas += 1
+	HUD.set_vidas(vidas)
+

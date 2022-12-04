@@ -4,6 +4,7 @@ extends Node
 signal spawn_player(position)
 signal player_died
 signal player_spawning
+signal life_picked_up
 
 
 func spawn_player(position: Vector2):
@@ -16,3 +17,7 @@ func player_died():
 
 func player_spawning():
 	emit_signal('player_spawning')
+
+
+func life_picked_up():
+	emit_signal("life_picked_up")

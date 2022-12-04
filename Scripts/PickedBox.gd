@@ -1,9 +1,9 @@
-class_name HurtBox, "res://Imagenes/HurtBox.svg"
+class_name PickedBox, "res://Imagenes/HurtBox.svg"
 extends Area2D
 
 
 func _init():
-	collision_mask = 2
+	collision_mask = 8
 	monitorable = false
 	collision_layer = 0
  
@@ -15,7 +15,7 @@ func _ready():
 		printerr("Connecting signal: ", _err_area_entered)
 
 
-func _on_area_entered(_hitbox: HitBox):
-	if owner.has_method("take_damage"):
-		owner.take_damage()
+func _on_area_entered(_pickbox: PickBox):
+	if owner.has_method("picked_up"):
+		owner.picked_up()
 

@@ -19,8 +19,10 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Piso" parent="." instance=ExtResource( 2 )]
+z_index = 5
 
 [node name="Techo" parent="." instance=ExtResource( 3 )]
+z_index = 5
 
 [node name="PlatformsSpawner" parent="." instance=ExtResource( 4 )]
 
