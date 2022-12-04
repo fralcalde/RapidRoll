@@ -5,6 +5,7 @@ signal spawn_player(position)
 signal player_died
 signal player_spawning
 signal life_picked_up
+signal clon_picked_up
 
 
 func spawn_player(position: Vector2):
@@ -21,3 +22,6 @@ func player_spawning():
 
 func life_picked_up():
 	emit_signal("life_picked_up")
+
+func clon_picked_up():
+	emit_signal("clon_picked_up")

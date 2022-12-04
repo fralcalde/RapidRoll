@@ -17,6 +17,7 @@ func _init():
 	var _err_spawn_player = GameEvents.connect('spawn_player', self, '_spawn_player_at_pos')
 	var _err_player_spawning = GameEvents.connect('player_spawning', self, '_on_player_spawning')
 	var _err_vida = GameEvents.connect("life_picked_up", self, 'player_picked_life')
+	var _err_clon = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
 	
 	if _err_spawn_player != OK:
 		printerr("Connecting signal: ", _err_spawn_player)
@@ -72,3 +73,6 @@ func player_picked_life():
 	vidas += 1
 	HUD.set_vidas(vidas)
 
+
+func player_picked_clon():
+	_instance_player_spawner_platform()

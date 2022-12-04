@@ -8,6 +8,7 @@ export var platforms = {
 	'PLAT_PINCHOS': {'scene': preload("res://Scenes/Platforms/PlatformPinchos.tscn"), 'weight': 2.0},
 	'PLAT_PLAYER_SPAWNER': {'scene': preload("res://Scenes/Platforms/PlataformPlayerSpawner.tscn"), 'weight': 0.2},
 	'PLAT_VIDA': {'scene': preload("res://Scenes/Platforms/PlatformVida.tscn"), 'weight': 0.5},
+	'PLAT_CLON': {'scene': preload("res://Scenes/Platforms/PlatformClon.tscn"), 'weight': 0.5}
 }
 
 
