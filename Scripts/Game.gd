@@ -1,16 +1,16 @@
 class_name Game
 extends Node2D
 
-export var vidas = 3
+export var vidas = 3 setget set_vidas
+var alive_players = 0
+onready var score = 0 setget set_score
 
 var player_scene = preload("res://Scenes/RPlayer.tscn") #se carga en memoria 
 
 onready var spawn_position = $Spawn_Position
-onready var score = 0
 onready var timer_spawn = $Timer_Spawn
 onready var HUD = $HUDLayer/HUD
 onready var platform_spawner = $PlatformsSpawner
-var alive_players = 0
 
 # Godot llama _init() y _enter_tree() desde la raiz del arbol hacia abajo!!
 func _init():
@@ -40,25 +40,19 @@ func _spawn_player_at_pos(_pos: Vector2):
 	player.connect("player_scoring", self, "_on_player_scoring")
 
 
-func _instance_player_spawner_platform():
+func _create_player_spawner_platform():
 	platform_spawner.next_platforms.push_front('PLAT_PLAYER_SPAWNER')
 
 
 func _on_player_died():
 	alive_players = alive_players - 1
 	if alive_players <= 0:
-		vidas = vidas - 1
-		if vidas > 0:
-			timer_spawn.start()
-		elif vidas <= 0:
-			print("Game Over")
-	
-	HUD.set_vidas(vidas)
+		self.vidas = vidas - 1
 
 
 func _on_player_scoring():
-	score += 1
-	HUD.set_score(score)
+	# self.score porque si no, no se usa la funcion de setget
+	self.score += 1
 
 
 func _on_player_spawning():
@@ -66,13 +60,28 @@ func _on_player_spawning():
 
 
 func _on_Timer_Spawn_timeout():
-	_instance_player_spawner_platform()
+	_create_player_spawner_platform()
 
 
 func player_picked_life():
-	vidas += 1
-	HUD.set_vidas(vidas)
+	# self.vidas porque si no, no se usa la funcion de setget
+	self.vidas += 1
 
 
 func player_picked_clon():
-	_instance_player_spawner_platform()
+	_create_player_spawner_platform()
+
+
+func set_score(new_score):
+	score = new_score
+	HUD.set_score(new_score)
+
+
+func set_vidas(new_vidas):
+	vidas = new_vidas
+	HUD.set_vidas(vidas)
+	
+	if vidas > 0:
+		timer_spawn.start()
+	elif vidas <= 0:
+		print("Game Over")
