@@ -13,9 +13,12 @@ export var platforms = {
 
 
 var next_platforms: Array = ['PLAT_PLAYER_SPAWNER','PLAT_PLAYER_SPAWNER']
+var level = 0
 
 
 func _ready():
+	var _err = GameEvents.connect('level_up', self, '_on_level_up')
+	
 	_calcular_probabilidades()
 	_asignar_intervalo()
 	_spawn_platform()
@@ -34,6 +37,7 @@ func _spawn_next_platform():
 	
 	new_platform.position.x = rand_range(0, get_viewport().size.x)
 	new_platform.position.y = get_viewport().size.y
+	new_platform.level = level
 	add_child(new_platform)
 
 
@@ -43,6 +47,7 @@ func _spawn_random_platform():
 	
 	new_platform.position.x = rand_range(0, get_viewport().size.x)
 	new_platform.position.y = get_viewport().size.y
+	new_platform.level = level
 	add_child(new_platform)
 
 
@@ -79,3 +84,7 @@ func get_random_platform():
 		i = i + 1
 	
 	return platforms[platforms.keys()[i - 1]]
+
+
+func _on_level_up(new_level):
+	level = new_level

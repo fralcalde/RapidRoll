@@ -87,6 +87,7 @@ func calculate_current_level():
 	level = score / 250
 	
 	if current_level != level:
+		GameEvents.level_up(level)
 		print('Level up!')
 
 
