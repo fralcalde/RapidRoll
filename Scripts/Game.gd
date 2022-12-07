@@ -3,7 +3,8 @@ extends Node2D
 
 export var vidas = 3 setget set_vidas
 var alive_players = 0
-onready var score = 0 setget set_score
+var score = 0 setget set_score
+var level = 0
 
 var player_scene = preload("res://Scenes/RPlayer.tscn") #se carga en memoria 
 
@@ -11,6 +12,7 @@ onready var spawn_position = $Spawn_Position
 onready var timer_spawn = $Timer_Spawn
 onready var HUD = $HUDLayer/HUD
 onready var platform_spawner = $PlatformsSpawner
+
 
 # Godot llama _init() y _enter_tree() desde la raiz del arbol hacia abajo!!
 func _init():
@@ -26,8 +28,10 @@ func _init():
 	if _err_vida != OK:
 		printerr("Connecting signal: ", _err_vida)
 
+
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
 func _ready():
+	randomize()
 	HUD.set_score(score)
 	HUD.set_vidas(vidas)
 
@@ -74,7 +78,16 @@ func player_picked_clon():
 
 func set_score(new_score):
 	score = new_score
+	calculate_current_level()
 	HUD.set_score(new_score)
+
+
+func calculate_current_level():
+	var current_level = level
+	level = score / 250
+	
+	if current_level != level:
+		print('Level up!')
 
 
 func set_vidas(new_vidas):
