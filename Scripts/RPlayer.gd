@@ -4,9 +4,20 @@ extends RigidBody2D
 signal player_died
 signal player_scoring
 
-const GRAVITY = 300
+var level = 0
+var GRAVITY = 0
+const INITIAL_GRAVITY = 400
+const GRAVITY_INCREASE_FACTOR = 25
+
+var move_speed = 0
+const INITIAL_SPEED = 300
+const SPEED_INCREASE_FACTOR = 10
 var move_input = 0
-var move_speed = 300
+
+func _ready():
+	var _err = GameEvents.connect('level_up', self, "_on_level_up")
+	GRAVITY = INITIAL_GRAVITY + GRAVITY_INCREASE_FACTOR * level
+	move_speed = INITIAL_SPEED + SPEED_INCREASE_FACTOR * level
 
 
 func _process(_delta):
@@ -28,3 +39,18 @@ func _integrate_forces(state):
 func take_damage():
 	emit_signal("player_died")
 	queue_free()
+
+
+func _on_level_up(new_level):
+	level = new_level
+	calculate_gravity()
+	calculate_speed()
+
+
+func calculate_gravity():
+	GRAVITY = INITIAL_GRAVITY + GRAVITY_INCREASE_FACTOR * level
+	print('New gravity: ', GRAVITY)
+
+
+func calculate_speed():
+	move_speed = INITIAL_SPEED + SPEED_INCREASE_FACTOR * level

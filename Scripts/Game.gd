@@ -39,6 +39,7 @@ func _ready():
 func _spawn_player_at_pos(_pos: Vector2):
 	var player = player_scene.instance()
 	player.position = _pos
+	player.level = level
 	add_child(player)
 	player.connect("player_died", self, "_on_player_died")
 	player.connect("player_scoring", self, "_on_player_scoring")
@@ -88,7 +89,6 @@ func calculate_current_level():
 	
 	if current_level != level:
 		GameEvents.level_up(level)
-		print('Level up!')
 
 
 func set_vidas(new_vidas):

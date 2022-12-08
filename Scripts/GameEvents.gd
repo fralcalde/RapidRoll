@@ -29,4 +29,5 @@ func clon_picked_up():
 
 
 func level_up(new_level: int):
+	print('Level Up! ', new_level)
 	emit_signal('level_up', new_level)
