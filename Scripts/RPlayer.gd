@@ -10,9 +10,10 @@ const INITIAL_GRAVITY = 400
 const GRAVITY_INCREASE_FACTOR = 25
 
 var move_speed = 0
-const INITIAL_SPEED = 300
-const SPEED_INCREASE_FACTOR = 10
+const INITIAL_SPEED = 150
+const SPEED_INCREASE_FACTOR = 15
 var move_input = 0
+
 
 func _ready():
 	var _err = GameEvents.connect('level_up', self, "_on_level_up")
@@ -54,3 +55,4 @@ func calculate_gravity():
 
 func calculate_speed():
 	move_speed = INITIAL_SPEED + SPEED_INCREASE_FACTOR * level
+	print('New speed: ', move_speed)
