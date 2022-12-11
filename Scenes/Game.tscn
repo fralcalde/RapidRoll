@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 [node name="Spawn_Position" type="Position2D" parent="."]
 
 [node name="Timer_Spawn" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="Piso" parent="." instance=ExtResource( 2 )]

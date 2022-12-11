@@ -1,8 +1,5 @@
 extends Node
 
-const SPECIAL_PLATFORM_CHANCE = 25
-
-
 export var platforms = {
 	'PLAT': {'scene': preload("res://Scenes/Platforms/Platform.tscn"), 'weight': 8.5},
 	'PLAT_PINCHOS': {'scene': preload("res://Scenes/Platforms/PlatformPinchos.tscn"), 'weight': 1.5},
@@ -14,14 +11,20 @@ export var platforms = {
 
 var next_platforms: Array = ['PLAT_PLAYER_SPAWNER','PLAT_PLAYER_SPAWNER']
 var level = 0
+const INITIAL_PLAT_FREQ = 1.5
+const PLAT_FREQ_FACTOR = 0.03
+var platform_freq = INITIAL_PLAT_FREQ
+onready var timer = $Timer
 
 
 func _ready():
 	var _err = GameEvents.connect('level_up', self, '_on_level_up')
 	
+	set_freq()
+	timer.start()
 	_calcular_probabilidades()
 	_asignar_intervalo()
-	_spawn_platform()
+#	_spawn_platform()
 
 
 func _spawn_platform():
@@ -88,3 +91,11 @@ func get_random_platform():
 
 func _on_level_up(new_level):
 	level = new_level
+	set_freq()
+
+
+func set_freq():
+	platform_freq = INITIAL_PLAT_FREQ - PLAT_FREQ_FACTOR * level
+	timer.wait_time = platform_freq
+	print('New freq: ', platform_freq)
+

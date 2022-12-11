@@ -5,6 +5,7 @@ export var vidas = 3 setget set_vidas
 var alive_players = 0
 var score = 0 setget set_score
 var level = 0
+var level_threshold = 500
 
 var player_scene = preload("res://Scenes/RPlayer.tscn") #se carga en memoria 
 
@@ -32,6 +33,7 @@ func _init():
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
 func _ready():
 	randomize()
+	calculate_current_level()
 	HUD.set_score(score)
 	HUD.set_vidas(vidas)
 
@@ -85,7 +87,7 @@ func set_score(new_score):
 
 func calculate_current_level():
 	var current_level = level
-	level = score / 250
+	level = score / level_threshold
 	
 	if current_level != level:
 		GameEvents.level_up(level)
