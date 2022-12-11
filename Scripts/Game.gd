@@ -92,10 +92,11 @@ func calculate_current_level():
 
 
 func set_vidas(new_vidas):
+	if new_vidas <= 0:
+		print("Game Over")
+	elif new_vidas < vidas:
+		timer_spawn.start()
+	
 	vidas = new_vidas
 	HUD.set_vidas(vidas)
-	
-	if vidas > 0:
-		timer_spawn.start()
-	elif vidas <= 0:
-		print("Game Over")
+
