@@ -2,7 +2,7 @@ class_name RPlayer
 extends RigidBody2D
 
 signal player_died
-signal player_scoring
+signal player_scoring(score)
 
 var level = 0
 var GRAVITY = 0
@@ -13,6 +13,8 @@ var move_speed = 0
 const INITIAL_SPEED = 150
 const SPEED_INCREASE_FACTOR = 15
 var move_input = 0
+
+export var FALL_SCORE = 1
 
 
 func _ready():
@@ -34,7 +36,7 @@ func _integrate_forces(state):
 	state.set_linear_velocity(desired_vel)
 	
 	if _velocity.y > 0:
-		emit_signal("player_scoring")
+		emit_signal("player_scoring", FALL_SCORE)
 
 
 func take_damage():
