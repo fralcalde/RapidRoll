@@ -17,17 +17,11 @@ onready var platform_spawner = $PlatformsSpawner
 
 # Godot llama _init() y _enter_tree() desde la raiz del arbol hacia abajo!!
 func _init():
-	var _err_spawn_player = GameEvents.connect('spawn_player', self, '_spawn_player_at_pos')
-	var _err_player_spawning = GameEvents.connect('player_spawning', self, '_on_player_spawning')
-	var _err_vida = GameEvents.connect("life_picked_up", self, 'player_picked_life')
-	var _err_clon = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
-	
-	if _err_spawn_player != OK:
-		printerr("Connecting signal: ", _err_spawn_player)
-	if _err_player_spawning != OK:
-		printerr("Connecting signal: ", _err_player_spawning)
-	if _err_vida != OK:
-		printerr("Connecting signal: ", _err_vida)
+	var _err = GameEvents.connect('spawn_player', self, '_spawn_player_at_pos')
+	_err = GameEvents.connect('player_spawning', self, '_on_player_spawning')
+	_err = GameEvents.connect("life_picked_up", self, 'player_picked_life')
+	_err = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
+	_err = GameEvents.connect("player_scoring", self, '_on_player_scoring')
 
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
@@ -57,9 +51,9 @@ func _on_player_died():
 		self.vidas = vidas - 1
 
 
-func _on_player_scoring():
+func _on_player_scoring(score: int):
 	# self.score porque si no, no se usa la funcion de setget
-	self.score += 1
+	self.score += score
 
 
 func _on_player_spawning():
