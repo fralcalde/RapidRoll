@@ -20,7 +20,7 @@ func _enter_tree():
 
 func _process(_delta):
 	var altura_pantalla = get_viewport_rect().size.y
-	var spawn_height = altura_pantalla / 2
+	var spawn_height = altura_pantalla * 2 / 3
 	
 	if position.y <= spawn_height and spawned == false:
 		spawn_player()
