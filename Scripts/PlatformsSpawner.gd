@@ -13,7 +13,7 @@ export var platforms = {
 var next_platforms: Array = ['PLAT_PLAYER_SPAWNER']
 var level = 0
 const INITIAL_PLAT_FREQ = 1.4
-const PLAT_FREQ_FACTOR = 0.03
+const PLAT_FREQ_FACTOR = 0.02
 var platform_freq = INITIAL_PLAT_FREQ
 onready var timer = $Timer
 

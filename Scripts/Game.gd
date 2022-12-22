@@ -5,7 +5,7 @@ export var vidas = 3 setget set_vidas
 var alive_players = 0
 var score = 0 setget set_score
 var level = 0
-var level_threshold = 500
+var level_threshold = 1000
 
 var player_scene = preload("res://Scenes/RPlayer.tscn") #se carga en memoria 
 
@@ -51,9 +51,9 @@ func _on_player_died():
 		self.vidas = vidas - 1
 
 
-func _on_player_scoring(score: int):
+func _on_player_scoring(_score: int):
 	# self.score porque si no, no se usa la funcion de setget
-	self.score += score
+	self.score += _score
 
 
 func _on_player_spawning():

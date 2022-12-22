@@ -5,6 +5,5 @@
 
 [node name="Plataforma" instance=ExtResource( 1 )]
 
-[node name="Pinchos" parent="." index="2" instance=ExtResource( 2 )]
-position = Vector2( 2, -44 )
-scale = Vector2( 4, 2 )
+[node name="Pinchos" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 0, -16 )
