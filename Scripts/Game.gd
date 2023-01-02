@@ -22,6 +22,7 @@ func _init():
 	_err = GameEvents.connect("life_picked_up", self, 'player_picked_life')
 	_err = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
 	_err = GameEvents.connect("player_scoring", self, '_on_player_scoring')
+	_err = GameEvents.connect('coin_picked_up', self, '_on_coin_picked_up')
 
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
@@ -96,3 +97,6 @@ func set_vidas(new_vidas):
 	vidas = new_vidas
 	HUD.set_vidas(vidas)
 
+
+func _on_coin_picked_up(score_value):
+	self.score += score_value
