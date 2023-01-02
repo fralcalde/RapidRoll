@@ -19,6 +19,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Piso" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 648 )
 z_index = 5
 
 [node name="Techo" parent="." instance=ExtResource( 3 )]
