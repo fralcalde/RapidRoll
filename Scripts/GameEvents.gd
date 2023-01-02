@@ -8,6 +8,7 @@ signal player_scoring(score)
 signal life_picked_up
 signal clon_picked_up
 signal level_up(level)
+signal coin_picked_up(score_value)
 
 
 func spawn_player(position: Vector2):
@@ -36,3 +37,7 @@ func clon_picked_up():
 func level_up(new_level: int):
 	print('Level Up! ', new_level)
 	emit_signal('level_up', new_level)
+
+
+func coin_picked_up(score_value: int):
+	emit_signal('coin_picked_up', score_value)

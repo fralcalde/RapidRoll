@@ -6,7 +6,8 @@ export var platforms = {
 	'PLAT_PLAYER_SPAWNER': {'scene': preload("res://Scenes/Platforms/PlataformPlayerSpawner.tscn"), 'weight': 0.1},
 	'PLAT_VIDA': {'scene': preload("res://Scenes/Platforms/PlatformVida.tscn"), 'weight': 0.5},
 	'PLAT_CLON': {'scene': preload("res://Scenes/Platforms/PlatformClon.tscn"), 'weight': 0.5},
-	'PLAT_DORADA': {'scene': preload("res://Scenes/Platforms/PlatformDorada.tscn"), 'weight': 2.0},
+	'PLAT_DORADA': {'scene': preload("res://Scenes/Platforms/PlatformDorada.tscn"), 'weight': 1.0},
+	'PLAT_MONEDITA': {'scene': preload("res://Scenes/Platforms/PlataformMonedita.tscn"), 'weight': 3.0},
 }
 
 
