@@ -2,9 +2,7 @@ class_name RPlayer
 extends RigidBody2D
 
 signal player_died
-signal player_scoring(score)
 
-var level = 0
 var GRAVITY = 0
 const INITIAL_GRAVITY = 400
 const GRAVITY_INCREASE_FACTOR = 25
@@ -21,6 +19,7 @@ export var FALL_SCORE = 1
 
 func _ready():
 	var _err = GameEvents.connect('level_up', self, "_on_level_up")
+	var level = GameStats.level
 	GRAVITY = INITIAL_GRAVITY + GRAVITY_INCREASE_FACTOR * level
 	move_speed = INITIAL_SPEED + SPEED_INCREASE_FACTOR * level
 
@@ -39,7 +38,7 @@ func _integrate_forces(state):
 	state.angular_velocity = clamp(state.angular_velocity + move_input * ANGULAR_SPEED, -MAX_ANGULAR_VEL, MAX_ANGULAR_VEL)
 	
 	if _velocity.y > 0:
-		emit_signal("player_scoring", FALL_SCORE)
+		GameEvents.emit_signal("player_scoring", FALL_SCORE)
 
 
 func take_damage():
@@ -47,17 +46,16 @@ func take_damage():
 	queue_free()
 
 
-func _on_level_up(new_level):
-	level = new_level
+func _on_level_up():
 	calculate_gravity()
 	calculate_speed()
 
 
 func calculate_gravity():
-	GRAVITY = INITIAL_GRAVITY + GRAVITY_INCREASE_FACTOR * level
+	GRAVITY = INITIAL_GRAVITY + GRAVITY_INCREASE_FACTOR * GameStats.level
 	print('New gravity: ', GRAVITY)
 
 
 func calculate_speed():
-	move_speed = INITIAL_SPEED + SPEED_INCREASE_FACTOR * level
+	move_speed = INITIAL_SPEED + SPEED_INCREASE_FACTOR * GameStats.level
 	print('New speed: ', move_speed)
