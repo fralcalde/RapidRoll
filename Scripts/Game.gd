@@ -3,9 +3,6 @@ extends Node2D
 
 export var vidas = 3 setget set_vidas
 var alive_players = 0
-var score = 0 setget set_score
-var level = 0
-var level_threshold = 1000
 
 var player_scene = preload("res://Scenes/RPlayer.tscn") #se carga en memoria 
 
@@ -21,25 +18,20 @@ func _init():
 	_err = GameEvents.connect('player_spawning', self, '_on_player_spawning')
 	_err = GameEvents.connect("life_picked_up", self, 'player_picked_life')
 	_err = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
-	_err = GameEvents.connect("player_scoring", self, '_on_player_scoring')
-	_err = GameEvents.connect('coin_picked_up', self, '_on_coin_picked_up')
 
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
 func _ready():
 	randomize()
-	calculate_current_level()
-	HUD.set_score(score)
 	HUD.set_vidas(vidas)
 
 
 func _spawn_player_at_pos(_pos: Vector2):
 	var player = player_scene.instance()
 	player.position = _pos
-	player.level = level
+	#player.level = level
 	add_child(player)
 	player.connect("player_died", self, "_on_player_died")
-	player.connect("player_scoring", self, "_on_player_scoring")
 
 
 func _create_player_spawner_platform():
@@ -50,11 +42,6 @@ func _on_player_died():
 	alive_players = alive_players - 1
 	if alive_players <= 0:
 		self.vidas = vidas - 1
-
-
-func _on_player_scoring(_score: int):
-	# self.score porque si no, no se usa la funcion de setget
-	self.score += _score
 
 
 func _on_player_spawning():
@@ -74,20 +61,6 @@ func player_picked_clon():
 	_create_player_spawner_platform()
 
 
-func set_score(new_score):
-	score = new_score
-	calculate_current_level()
-	HUD.set_score(new_score)
-
-
-func calculate_current_level():
-	var current_level = level
-	level = score / level_threshold
-	
-	if current_level != level:
-		GameEvents.level_up(level)
-
-
 func set_vidas(new_vidas):
 	if new_vidas <= 0:
 		print("Game Over")
@@ -96,7 +69,3 @@ func set_vidas(new_vidas):
 	
 	vidas = new_vidas
 	HUD.set_vidas(vidas)
-
-
-func _on_coin_picked_up(score_value):
-	self.score += score_value

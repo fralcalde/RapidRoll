@@ -7,7 +7,7 @@ signal player_spawning
 signal player_scoring(score)
 signal life_picked_up
 signal clon_picked_up
-signal level_up(level)
+signal level_up
 signal coin_picked_up(score_value)
 
 
@@ -34,9 +34,9 @@ func clon_picked_up():
 	emit_signal("clon_picked_up")
 
 
-func level_up(new_level: int):
-	print('Level Up! ', new_level)
-	emit_signal('level_up', new_level)
+func level_up():
+	print('Level Up! ', GameStats.level)
+	emit_signal('level_up')
 
 
 func coin_picked_up(score_value: int):

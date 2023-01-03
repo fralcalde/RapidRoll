@@ -13,4 +13,4 @@ func _physics_process(delta):
 	var collisions = scoring_area.get_overlapping_areas()
 	for area in collisions:
 		if area is PickBox:
-			GameEvents.emit_signal("player_scoring", SCORE * (level + 1))
+			GameEvents.emit_signal("player_scoring", SCORE * (GameStats.level + 1))

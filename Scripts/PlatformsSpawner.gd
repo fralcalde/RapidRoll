@@ -12,7 +12,6 @@ export var platforms = {
 
 
 var next_platforms: Array = ['PLAT_PLAYER_SPAWNER']
-var level = 0
 const INITIAL_PLAT_FREQ = 1.4
 const PLAT_FREQ_FACTOR = 0.02
 var platform_freq = INITIAL_PLAT_FREQ
@@ -26,7 +25,6 @@ func _ready():
 	timer.start()
 	_calcular_probabilidades()
 	_asignar_intervalo()
-#	_spawn_platform()
 
 
 func _spawn_platform():
@@ -42,7 +40,6 @@ func _spawn_next_platform():
 	
 	new_platform.position.x = rand_range(0, get_viewport().size.x)
 	new_platform.position.y = get_viewport().size.y
-	new_platform.level = level
 	add_child(new_platform)
 
 
@@ -52,7 +49,6 @@ func _spawn_random_platform():
 	
 	new_platform.position.x = rand_range(0, get_viewport().size.x)
 	new_platform.position.y = get_viewport().size.y
-	new_platform.level = level
 	add_child(new_platform)
 
 
@@ -91,13 +87,12 @@ func get_random_platform():
 	return platforms[platforms.keys()[i - 1]]
 
 
-func _on_level_up(new_level):
-	level = new_level
+func _on_level_up():
 	set_freq()
 
 
 func set_freq():
-	platform_freq = INITIAL_PLAT_FREQ - PLAT_FREQ_FACTOR * level
+	platform_freq = INITIAL_PLAT_FREQ - PLAT_FREQ_FACTOR * GameStats.level
 	timer.wait_time = platform_freq
 	print('New freq: ', platform_freq)
 
