@@ -2,7 +2,7 @@ extends Node
 
 
 const INITIAL_LEVEL = 0
-const INITIAL_SCORE = 10000
+const INITIAL_SCORE = 0
 const INITIAL_LEVEL_THRESHOLD = 1000
 
 var level
