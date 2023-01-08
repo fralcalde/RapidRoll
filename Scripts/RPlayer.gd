@@ -11,8 +11,6 @@ var move_speed = 0
 const INITIAL_SPEED = 150
 const SPEED_INCREASE_FACTOR = 15
 var move_input = 0
-const ANGULAR_SPEED = 0.5
-const MAX_ANGULAR_VEL = 20
 
 export var FALL_SCORE = 1
 
@@ -35,7 +33,6 @@ func _integrate_forces(state):
 	
 	var desired_vel = Vector2(move_input * move_speed, _velocity.y)
 	state.set_linear_velocity(desired_vel)
-	state.angular_velocity = clamp(state.angular_velocity + move_input * ANGULAR_SPEED, -MAX_ANGULAR_VEL, MAX_ANGULAR_VEL)
 	
 	if _velocity.y > 0:
 		GameEvents.emit_signal("player_scoring", FALL_SCORE)
