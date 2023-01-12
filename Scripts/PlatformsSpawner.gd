@@ -38,7 +38,7 @@ func _spawn_next_platform():
 	var new_platform = platforms[next_platforms.pop_front()]
 	new_platform = new_platform.scene.instance()
 	
-	new_platform.position.x = rand_range(0, get_viewport().size.x)
+	new_platform.position.x = rand_range(10, get_viewport().size.x / 2)
 	new_platform.position.y = get_viewport().size.y
 	add_child(new_platform)
 

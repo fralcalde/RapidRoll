@@ -62,9 +62,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Rapid Roll"
+config/name="UltriBall"
 run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://Sprites/pelota.png"
 
 [autoload]
 
@@ -75,7 +75,9 @@ GameStats="*res://Scripts/GameStats.gd"
 
 window/size/width=360
 window/size/height=640
-window/stretch/mode="2d"
+window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [global]
 
@@ -108,10 +110,6 @@ ui_right={
 2d_physics/layer_2="Hitbox/Hurtbox"
 2d_physics/layer_3="Kill Platforms"
 2d_physics/layer_4="Items"
-
-[physics]
-
-common/enable_pause_aware_picking=true
 
 [rendering]
 
