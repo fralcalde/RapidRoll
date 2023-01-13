@@ -6,10 +6,10 @@
 [ext_resource path="res://Scripts/MobileController.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 36, 640 )
+extents = Vector2( 100, 640 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 36, 640 )
+extents = Vector2( 100, 640 )
 
 [node name="MobileController" type="Node2D"]
 script = ExtResource( 4 )

@@ -18,12 +18,17 @@ func _init():
 	_err = GameEvents.connect('player_spawning', self, '_on_player_spawning')
 	_err = GameEvents.connect("life_picked_up", self, 'player_picked_life')
 	_err = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
+	_err = GameEvents.connect("start_game", self, 'start_game')
 
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
 func _ready():
 	randomize()
 	HUD.set_vidas(vidas)
+
+
+func start_game():
+	_create_player_spawner_platform()
 
 
 func _spawn_player_at_pos(_pos: Vector2):

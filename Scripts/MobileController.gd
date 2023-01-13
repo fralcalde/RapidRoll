@@ -1,11 +1,14 @@
 extends Node2D
 
 
+const FADE_TIME = 15.0
+
+
 func _ready():
 	if OS.get_name() != "Android":
 		queue_free()
 	
-	$Tween.interpolate_property($".", "modulate", Color("ffffff"), Color("00ffffff"), 10.0, Tween.TRANS_LINEAR)
+	$Tween.interpolate_property($".", "modulate", Color("ffffff"), Color("00ffffff"), FADE_TIME, Tween.TRANS_LINEAR)
 	$Tween.start()
 
 
