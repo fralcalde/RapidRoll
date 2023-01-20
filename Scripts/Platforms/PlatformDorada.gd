@@ -1,7 +1,5 @@
 extends Platform
 
-
-var scoring = false
 export var SCORE = 1
 onready var scoring_area = $ScoringArea
 onready var anim_player = $AnimationPlayer
@@ -23,3 +21,8 @@ func _physics_process(delta):
 
 func die():
 	anim_player.play("DESPAWN")
+
+
+func _on_ScoringArea_area_entered(area: PickBox):
+	if area.get_parent().has_method("set_particles_texture"):
+		area.get_parent().set_particles_texture("GOLD")

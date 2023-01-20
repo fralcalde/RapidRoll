@@ -14,6 +14,12 @@ var move_input = 0
 
 export var FALL_SCORE = 1
 
+onready var particles = $Particles2D
+var particles_tex = {
+	"GOLD": preload("res://Sprites/moneda_frente.png"),
+	"NORMAL": null,
+	}
+
 
 func _ready():
 	var _err = GameEvents.connect('level_up', self, "_on_level_up")
@@ -56,3 +62,10 @@ func calculate_gravity():
 func calculate_speed():
 	move_speed = INITIAL_SPEED + SPEED_INCREASE_FACTOR * GameStats.level
 	print('New speed: ', move_speed)
+
+
+func set_particles_texture(_type: String):
+	if particles_tex.has(_type):
+		particles.emitting = false
+		particles.texture = particles_tex[_type]
+		particles.emitting = true
