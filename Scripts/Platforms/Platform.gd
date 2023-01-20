@@ -29,4 +29,8 @@ func _physics_process(delta):
 
 func fuera_de_pantalla():
 	if position.y < 0:
-		queue_free()
+		die()
+
+
+func die():
+	queue_free()
