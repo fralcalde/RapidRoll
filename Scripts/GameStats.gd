@@ -3,11 +3,13 @@ extends Node
 
 const INITIAL_LEVEL = 0
 const INITIAL_SCORE = 0
-const INITIAL_LEVEL_THRESHOLD = 1000
+const INITIAL_NEXT_LEVEL = 1000
+const LEVEL_PROG_FACTOR = 100
 
 var level
+var next_level
 var score setget set_score
-var level_threshold
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +19,8 @@ func _ready():
 
 
 func initialize():
-	level_threshold = INITIAL_LEVEL_THRESHOLD
+	next_level = INITIAL_NEXT_LEVEL
+	level = 0
 	self.score = INITIAL_SCORE
 
 
@@ -36,8 +39,11 @@ func _on_coin_picked_up(score_value):
 
 
 func update_current_level():
-	var current_level = level
-	level = score / level_threshold
-	
-	if current_level != level:
-		GameEvents.level_up()
+	if next_level - 1 < score:
+		level_up()
+
+
+func level_up():
+	level += 1
+	next_level = INITIAL_NEXT_LEVEL + next_level + level * LEVEL_PROG_FACTOR
+	GameEvents.level_up()

@@ -114,3 +114,4 @@ anims/DESPAWN = SubResource( 4 )
 anims/SPAWN = SubResource( 3 )
 
 [connection signal="area_entered" from="ScoringArea" to="." method="_on_ScoringArea_area_entered"]
+[connection signal="area_exited" from="ScoringArea" to="." method="_on_ScoringArea_area_exited"]

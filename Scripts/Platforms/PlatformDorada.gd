@@ -24,5 +24,10 @@ func die():
 
 
 func _on_ScoringArea_area_entered(area: PickBox):
-	if area.get_parent().has_method("set_particles_texture"):
-		area.get_parent().set_particles_texture("GOLD")
+	if area.get_parent().has_method("start_emit_gold_particles"):
+		area.get_parent().start_emit_gold_particles()
+
+
+func _on_ScoringArea_area_exited(area: PickBox):
+	if area.get_parent().has_method("stop_emit_gold_particles"):
+		area.get_parent().stop_emit_gold_particles()

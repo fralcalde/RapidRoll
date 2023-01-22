@@ -41,7 +41,7 @@ func clon_picked_up():
 
 
 func level_up():
-	print('Level Up! ', GameStats.level)
+	print('Level Up! ', GameStats.level, ' Next level: ', GameStats.next_level)
 	emit_signal('level_up')
 
 
