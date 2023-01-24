@@ -22,7 +22,6 @@ func _ready():
 	var _err = GameEvents.connect('level_up', self, '_on_level_up')
 	
 	set_freq()
-	timer.start()
 	_calcular_probabilidades()
 	_asignar_intervalo()
 
@@ -96,3 +95,16 @@ func set_freq():
 	timer.wait_time = platform_freq
 	print('New freq: ', platform_freq)
 
+
+func set_plat_weight(_plat: String, _weight: float):
+	platforms[_plat]['weight'] = _weight
+	_calcular_probabilidades()
+	_asignar_intervalo()
+
+
+func stop_timer():
+	timer.stop()
+
+
+func start_timer():
+	timer.start()

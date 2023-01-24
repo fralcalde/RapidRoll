@@ -25,6 +25,7 @@ func _init():
 func _ready():
 	randomize()
 	HUD.set_vidas(vidas)
+	platform_spawner.start_timer()
 
 
 func start_game():
@@ -67,9 +68,16 @@ func player_picked_clon():
 
 func set_vidas(new_vidas):
 	if new_vidas <= 0:
-		print("Game Over")
+		game_over()
 	elif new_vidas < vidas:
 		timer_spawn.start()
 	
 	vidas = new_vidas
 	HUD.set_vidas(vidas)
+
+
+func game_over():
+	print("Game Over")
+	#get_tree().paused = true
+	#platform_spawner.set_plat_weight('PLAT_PLAYER_SPAWNER', 0.0)
+	platform_spawner.stop_timer()

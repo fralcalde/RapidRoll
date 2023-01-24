@@ -152,7 +152,7 @@ script = ExtResource( 4 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "SPINNING"
-frame = 1
+frame = 3
 playing = true
 
 [node name="PickedBox" type="Area2D" parent="."]
@@ -163,6 +163,7 @@ shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+area_mask = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/A = SubResource( 7 )
@@ -171,7 +172,6 @@ anims/RESET = SubResource( 8 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 emitting = false
-amount = 16
 one_shot = true
 explosiveness = 0.85
 local_coords = false
