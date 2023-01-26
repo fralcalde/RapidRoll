@@ -19,6 +19,7 @@ func _init():
 	_err = GameEvents.connect("life_picked_up", self, 'player_picked_life')
 	_err = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
 	_err = GameEvents.connect("start_game", self, 'start_game')
+	_err = GameEvents.connect("player_died", self, "_on_player_died")
 
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
@@ -36,7 +37,6 @@ func _spawn_player_at_pos(_pos: Vector2):
 	var player = player_scene.instance()
 	player.position = _pos
 	add_child(player)
-	player.connect("player_died", self, "_on_player_died")
 
 
 func _create_player_spawner_platform():

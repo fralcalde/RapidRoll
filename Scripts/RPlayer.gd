@@ -1,8 +1,6 @@
 class_name RPlayer
 extends RigidBody2D
 
-signal player_died
-
 var GRAVITY = 0
 const INITIAL_GRAVITY = 400
 const GRAVITY_INCREASE_FACTOR = 25
@@ -13,7 +11,6 @@ const SPEED_INCREASE_FACTOR = 15
 var move_input = 0
 
 export var FALL_SCORE = 1
-
 
 
 func _ready():
@@ -40,7 +37,7 @@ func _integrate_forces(state):
 
 
 func take_damage():
-	emit_signal("player_died")
+	GameEvents.emit_signal("player_died")
 	queue_free()
 
 

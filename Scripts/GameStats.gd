@@ -14,7 +14,7 @@ var score setget set_score
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var _err = GameEvents.connect('player_scoring', self, '_on_player_scoring')
-	_err = GameEvents.connect('coin_picked_up', self, '_on_coin_picked_up')
+	#_err = GameEvents.connect('coin_picked_up', self, '_on_coin_picked_up')
 	initialize()
 
 

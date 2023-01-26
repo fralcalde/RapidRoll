@@ -11,7 +11,7 @@ func _ready():
 
 
 func picked_up():
-	GameEvents.coin_picked_up(score_value)
+	GameEvents.coin_picked_up2(score_value)
 	$PickedBox.queue_free()
 	$AnimationPlayer.play("PICK_UP")
 

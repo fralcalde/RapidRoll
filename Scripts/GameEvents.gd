@@ -10,7 +10,7 @@ signal player_scoring(score)
 signal life_picked_up
 signal clon_picked_up
 signal level_up
-signal coin_picked_up(score_value)
+signal coin_picked_up
 
 
 func start_game():
@@ -45,5 +45,6 @@ func level_up():
 	emit_signal('level_up')
 
 
-func coin_picked_up(score_value: int):
-	emit_signal('coin_picked_up', score_value)
+func coin_picked_up2(score_value: int):
+	emit_signal('coin_picked_up')
+	emit_signal('player_scoring', score_value)
