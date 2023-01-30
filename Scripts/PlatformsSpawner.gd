@@ -20,6 +20,7 @@ onready var timer = $Timer
 
 func _ready():
 	var _err = GameEvents.connect('level_up', self, '_on_level_up')
+	_err = GameEvents.connect('start_platform_spawner', self, 'start_timer')
 	
 	set_freq()
 	_calcular_probabilidades()

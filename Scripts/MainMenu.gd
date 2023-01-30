@@ -8,7 +8,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
-		start_game()
+		$AnimationPlayer.play("DESPAWN")
 
 
 func start_game():
@@ -18,4 +18,8 @@ func start_game():
 
 
 func _on_TouchScreenButton_pressed():
-	start_game()
+	$AnimationPlayer.play("DESPAWN")
+
+
+func start_platform_spawner():
+	GameEvents.start_platform_spawner()

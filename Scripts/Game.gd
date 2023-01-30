@@ -1,10 +1,13 @@
 class_name Game
 extends Node2D
 
+const INITIAL_VIDAS = 3
 export var vidas = 3 setget set_vidas
 var alive_players = 0
 
 var player_scene = preload("res://Scenes/RPlayer.tscn") #se carga en memoria 
+var main_menu_scene = preload("res://Scenes/MainMenu.tscn")
+var end_game_scene = preload("res://Scenes/EndGameScreen.tscn")
 
 onready var spawn_position = $Spawn_Position
 onready var timer_spawn = $Timer_Spawn
@@ -20,16 +23,21 @@ func _init():
 	_err = GameEvents.connect("clon_picked_up", self, 'player_picked_clon')
 	_err = GameEvents.connect("start_game", self, 'start_game')
 	_err = GameEvents.connect("player_died", self, "_on_player_died")
+	_err = GameEvents.connect("spawn_main_menu", self, "spawn_main_menu")
 
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
 func _ready():
 	randomize()
 	HUD.set_vidas(vidas)
+	vidas = INITIAL_VIDAS
 	platform_spawner.start_timer()
 
 
 func start_game():
+	vidas = INITIAL_VIDAS
+	HUD.set_vidas(vidas)
+	platform_spawner.start_timer()
 	_create_player_spawner_platform()
 
 
@@ -78,6 +86,11 @@ func set_vidas(new_vidas):
 
 func game_over():
 	print("Game Over")
-	#get_tree().paused = true
-	#platform_spawner.set_plat_weight('PLAT_PLAYER_SPAWNER', 0.0)
 	platform_spawner.stop_timer()
+	var new_end_screen = end_game_scene.instance()
+	get_parent().add_child(new_end_screen)
+
+
+func spawn_main_menu():
+	var new_main_menu = main_menu_scene.instance()
+	get_parent().add_child(new_main_menu)

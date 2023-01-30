@@ -11,6 +11,8 @@ signal life_picked_up
 signal clon_picked_up
 signal level_up
 signal coin_picked_up
+signal spawn_main_menu
+signal start_platform_spawner
 
 
 func start_game():
@@ -48,3 +50,11 @@ func level_up():
 func coin_picked_up2(score_value: int):
 	emit_signal('coin_picked_up')
 	emit_signal('player_scoring', score_value)
+
+
+func spawn_main_menu():
+	emit_signal('spawn_main_menu')
+
+
+func start_platform_spawner():
+	emit_signal('start_platform_spawner')
