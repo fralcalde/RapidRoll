@@ -10,7 +10,12 @@ const INITIAL_SPEED = 150
 const SPEED_INCREASE_FACTOR = 15
 var move_input = 0
 
+var dead = false
 export var FALL_SCORE = 1
+
+onready var anim_player = $AnimationPlayer
+onready var hurtbox = $HurtBox
+onready var pickbox = $PickBox
 
 
 func _ready():
@@ -32,13 +37,16 @@ func _integrate_forces(state):
 	var desired_vel = Vector2(move_input * move_speed, _velocity.y)
 	state.set_linear_velocity(desired_vel)
 	
-	if _velocity.y > 0:
+	if _velocity.y > 0 and not dead:
 		GameEvents.emit_signal("player_scoring", FALL_SCORE)
 
 
 func take_damage():
+	dead = true
 	GameEvents.emit_signal("player_died")
-	queue_free()
+	hurtbox.queue_free()
+	pickbox.queue_free()
+	anim_player.play("DEATH")
 
 
 func _on_level_up():
