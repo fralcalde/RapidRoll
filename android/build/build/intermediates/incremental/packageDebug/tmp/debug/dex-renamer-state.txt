@@ -1,0 +1,4 @@
+#Sat Feb 11 17:17:35 ART 2023
+base.0=/home/fran/Games/Godot/RapidRoll/android/build/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

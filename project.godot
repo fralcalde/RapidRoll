@@ -60,6 +60,65 @@ _global_script_class_icons={
 "RPlayer": ""
 }
 
+[admob]
+
+config={
+"banner": {
+"position": 1,
+"respect_safe_area": true,
+"show_instantly": true,
+"size": "BANNER",
+"unit_ids": {
+"Android": {
+"standard": "ca-app-pub-7153426104286753/8319585946"
+},
+"iOS": {
+"standard": "ca-app-pub-3940256099942544/2934735716"
+}
+}
+},
+"debug": {
+"is_debug_on_release": false,
+"is_real": true,
+"is_test_europe_user_consent": false
+},
+"general": {
+"is_enabled": true,
+"is_for_child_directed_treatment": false,
+"max_ad_content_rating": "PG"
+},
+"interstitial": {
+"unit_ids": {
+"Android": {
+"standard": "ca-app-pub-7153426104286753/3067259263"
+},
+"iOS": {
+"standard": "ca-app-pub-3940256099942544/4411468910"
+}
+}
+},
+"rewarded": {
+"unit_ids": {
+"Android": {
+"standard": "ca-app-pub-3940256099942544/5224354917"
+},
+"iOS": {
+"standard": "ca-app-pub-3940256099942544/1712485313"
+}
+}
+},
+"rewarded_interstitial": {
+"unit_ids": {
+"Android": {
+"standard": "ca-app-pub-3940256099942544/5354046379"
+},
+"iOS": {
+"standard": "ca-app-pub-3940256099942544/6978759866"
+}
+}
+}
+}
+
 [application]
 
 config/name="UltriBall"
@@ -70,6 +129,7 @@ config/icon="res://Sprites/pelota.png"
 
 GameEvents="*res://Scripts/GameEvents.gd"
 GameStats="*res://Scripts/GameStats.gd"
+MobileAds="*res://addons/admob/src/singletons/MobileAds.gd"
 
 [display]
 
@@ -78,6 +138,10 @@ window/size/height=640
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/admob/plugin.cfg" )
 
 [global]
 

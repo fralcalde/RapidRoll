@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/HUD/LevelCounter.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "LEVEL_UP"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 2.07053 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="LevelCounter" type="CenterContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -55.0
+margin_top = -20.0
+margin_right = 55.0
+margin_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 55, 20 )
+script = ExtResource( 1 )
+
+[node name="VSeparator" type="HBoxContainer" parent="."]
+margin_top = 13.0
+margin_right = 110.0
+margin_bottom = 27.0
+alignment = 1
+
+[node name="Level" type="Label" parent="VSeparator"]
+margin_right = 34.0
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level"
+align = 1
+
+[node name="Number" type="Label" parent="VSeparator"]
+margin_left = 38.0
+margin_right = 110.0
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "320000000"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/LEVEL_UP = SubResource( 1 )

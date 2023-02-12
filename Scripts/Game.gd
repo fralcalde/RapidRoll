@@ -24,6 +24,9 @@ func _init():
 	_err = GameEvents.connect("start_game", self, 'start_game')
 	_err = GameEvents.connect("player_died", self, "_on_player_died")
 	_err = GameEvents.connect("spawn_main_menu", self, "spawn_main_menu")
+	_err = MobileAds.connect("interstitial_loaded", self, "_on_interstitial_loaded")
+	_err = MobileAds.connect("interstitial_failed_to_load", self, "_on_interstitial_load_failed")
+	MobileAds.load_interstitial("standard")
 
 
 # Godot llama _ready() desde las hojas del arbol hacia arriba!!
@@ -39,6 +42,7 @@ func start_game():
 	HUD.set_vidas(vidas)
 	platform_spawner.start_timer()
 	_create_player_spawner_platform()
+	MobileAds.load_interstitial("standard")
 
 
 func _spawn_player_at_pos(_pos: Vector2):
@@ -94,3 +98,10 @@ func game_over():
 func spawn_main_menu():
 	var new_main_menu = main_menu_scene.instance()
 	get_parent().add_child(new_main_menu)
+
+
+func _on_interstitial_loaded() -> void:
+	print("Ready to show interstitial")
+
+func _on_insterstitial_load_failed() -> void:
+	print("FAIL!!!!!!!!!!!!11 muthafuckin mobile ads are so shiiiiiiiiiiiiit!") 
