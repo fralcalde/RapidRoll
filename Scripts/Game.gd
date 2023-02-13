@@ -34,12 +34,14 @@ func _ready():
 	randomize()
 	HUD.set_vidas(vidas)
 	vidas = INITIAL_VIDAS
+	platform_spawner.set_plat_weight('PLAT_PLAYER_SPAWNER', 0.0)
 	platform_spawner.start_timer()
 
 
 func start_game():
 	vidas = INITIAL_VIDAS
 	HUD.set_vidas(vidas)
+	platform_spawner.set_plat_weight('PLAT_PLAYER_SPAWNER', 0.1)
 	platform_spawner.start_timer()
 	_create_player_spawner_platform()
 	MobileAds.load_interstitial("standard")
@@ -90,6 +92,7 @@ func set_vidas(new_vidas):
 
 func game_over():
 	print("Game Over")
+	platform_spawner.set_plat_weight('PLAT_PLAYER_SPAWNER', 0.0)
 	platform_spawner.stop_timer()
 	var new_end_screen = end_game_scene.instance()
 	get_parent().add_child(new_end_screen)
