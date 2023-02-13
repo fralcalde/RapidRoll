@@ -16,6 +16,7 @@ const INITIAL_PLAT_FREQ = 1.4
 const PLAT_FREQ_FACTOR = 0.02
 var platform_freq = INITIAL_PLAT_FREQ
 onready var timer = $Timer
+var total_weight = 0.0
 
 
 func _ready():
@@ -23,8 +24,7 @@ func _ready():
 	_err = GameEvents.connect('start_platform_spawner', self, 'start_timer')
 	
 	set_freq()
-	_calcular_probabilidades()
-	_asignar_intervalo()
+	_calcular_total_weight()
 
 
 func _spawn_platform():
@@ -56,35 +56,23 @@ func _on_Timer_timeout():
 	_spawn_platform()
 
 
-func _calcular_probabilidades():
-	var total_weight = 0.0
+func _calcular_total_weight():
+	total_weight = 0.0
 	
 	for el in platforms:
 		total_weight = total_weight + platforms[el].weight
-	
-	
-	for el in platforms:
-		var chances = platforms[el].weight / total_weight
-		platforms[el].weight = chances
-
-
-func _asignar_intervalo():
-	var sum = 0.0
-	
-	for el in platforms:
-		platforms[el].interval = sum
-		sum = sum + platforms[el].weight
 
 
 func get_random_platform():
 	randomize()
-	var r = randf()
+	var r = randf() * total_weight
 	
-	var i = 0
-	while i < platforms.size() and r > platforms[platforms.keys()[i]].interval:
-		i = i + 1
+	for el in platforms:
+		r = r - platforms[el].weight
+		if r <= 0:
+			return platforms[el]
 	
-	return platforms[platforms.keys()[i - 1]]
+	return null
 
 
 func _on_level_up():
@@ -99,8 +87,7 @@ func set_freq():
 
 func set_plat_weight(_plat: String, _weight: float):
 	platforms[_plat]['weight'] = _weight
-	_calcular_probabilidades()
-	_asignar_intervalo()
+	_calcular_total_weight()
 
 
 func stop_timer():
